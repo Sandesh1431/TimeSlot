@@ -1,7 +1,7 @@
-
 .admin__menu .level-0.item-manager > a:before {
-    content: url('../images/gunicorn.svg');
-    height: 28px;
+    content: url('../images/booking.png');
+    height: 30px;
     margin: 0 auto;
     width: 30px;
+ 
 }   
