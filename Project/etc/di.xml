@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Codilar\Project\Api\SlotRepositoryInterface" type="Codilar\Project\Model\SlotRepository"/>
+    <preference for="Codilar\Project\Api\Data\SlotInterface" type="Codilar\Project\Model\Slot" />
+<preference for="Magento\Customer\Controller\Account\LoginPost" type="Codilar\Project\Controller\Account\LoginPost" />
+ <virtualType name="Codilar\Project\Model\ResourceModel\Slot\Slot\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+                <argument name="mainTable" xsi:type="string">booking</argument>
+            <argument name="resourceModel" xsi:type="string">Codilar\Project\Model\ResourceModel\Slot</argument>
+        </arguments>
+        </virtualType>
+        <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+            <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="slot_data_data_source" xsi:type="string">Codilar\Project\Model\ResourceModel\Slot\Slot\Collection</item>
+        </argument>
+        </arguments>
+    </type>
+</config>

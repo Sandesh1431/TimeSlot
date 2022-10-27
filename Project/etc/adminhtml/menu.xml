@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul_Grid Menu
+ *
+ * @category    Webkul
+ * @package     Webkul_Grid
+ * @author      Webkul Software Private Limited
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codilar_Project::manager" title="Booking" module="Codilar_Project" sortOrder="10" resource="Codilar_Project::manager"/>
+        <add id="Codilar_Project_Child::add_row" title="Data" module="Codilar_Project" sortOrder="20" parent="Codilar_Project::manager" action="slot/grid" resource="Codilar_Project::add_row"/>
+        <add id="Codilar_Project_Child2::add_row" title="Configuration" module="Codilar_Project" sortOrder="25" parent="Codilar_Project::manager" action="adminhtml/system_config/edit/section/module/slot" resource="Codilar_Project::add_row"/>
+    </menu>
+</config>

@@ -1,0 +1,254 @@
+<!-- <div class="two-column">
+    <div class="field appointment">
+	<label class="label" for="appointment"><span>Date</span></label>
+	<div class="control">
+	    <input name="appointment" id="appointment" readonly title="Appointment Date & Time" value="" placeholder="Date & Time" class="input-text" type="text" data-validate="{required:true}">
+	</div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    require([
+        "jquery",
+        "mage/calendar"
+    ], function ($) {
+        var now=new Date();
+        var later=new Date();
+        var minHour = 9; // (Hours) Add minimum time to select on each day. Appointment start time.
+        var maxHour = 17; // (Hours) Add maximum time to select. Appointment end time.
+        var bufferTime = 2; // (Hours) Add minimum time before one can book an appointment. User must book before two hours from booking time.
+        var timeslotDuration = 15; // (Minutes) Your appointment slot duration.
+        later.setHours(now.getHours()+bufferTime);
+        later.setMinutes(now.getMinutes()+(timeslotDuration - (now.getMinutes()%timeslotDuration)));
+        $("#appointment").calendar({
+            showsTime: true,
+            hideIfNoPrevNext: true,
+            buttonText: "<?php echo __('Select Date') ?>",
+            minDate: later, // This will disable selection of previous dates.
+            stepMinute: timeslotDuration,
+            hourMin: minHour,
+            hourMax: maxHour,
+            beforeShowDay: noWeekendsOrHolidays
+        });
+        $("#appointment_date").click(function(){
+            jQuery(this).val('');
+        });
+    });
+    // Function to exclude weekends from datetime picker.
+    function noWeekendsOrHolidays(date) {
+        var day = date.getDay();
+        var maxHour = 17;
+        var bufferTime = 2;
+        if(date.getDate() == new Date().getDate() && date.getMonth() == new Date().getMonth() && new Date().getHours()+bufferTime >= maxHour) {
+            return true;
+        }
+        return [(day > 0 && day < 7), ""];
+    }
+</script> -->
+<!-- <input type="text" name="datetimepicker" id="datetimepicker" value="" class="datetimepicker">
+<script>
+require([
+    'jquery',
+    'mage/calendar'
+], function($){
+    $('#datetimepicker').datetimepicker({
+        dateFormat: 'mm/dd/yy',
+        timeFormat: 'HH:mm:ss',
+        changeMonth: true,
+        changeYear: true,
+        showsTime: true
+    });
+});
+</script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form method="post" action="<?= $block->getmyUrl() ?>">
+<fieldset>
+<div class="field overview required" id="date-range">
+    <label for="from" class="label">
+        <span>From</span>
+    </label>
+    <div class="control">
+        <input class="input-text required-entry"
+            type="text"
+            id="date-from"
+            name="from"
+          />
+    </div>
+
+    <label for="to" class="label">
+        <span>To</span>
+    </label>
+    <div class="control">
+        <input class="input-text required-entry"
+            type="text"
+            id="date-to"
+            name="to" />
+    </div>
+    <input type="submit" value="<?= __("Submit") ?>" />
+</div>
+
+</fieldset>
+</form>
+
+<script>
+require([
+    'jquery',
+    'mage/mage',
+    'mage/calendar'],
+    function($){
+    $('#date-range').dateRange({
+        buttonText: 'Select Date',
+        from: {
+            id: 'date-from'
+        },
+        to: {
+            id: 'date-to'
+        },
+        dateFormat: 'mm/dd/yy',
+        timeFormat:  "H:00",
+        changeMonth: true,
+        changeYear: true,
+        showsTime: true
+    });
+});
+</script> -->
+
+
+<?php 
+$helper = \Magento\Framework\App\ObjectManager::getInstance()->get('Codilar\Project\Helper\Data'); 
+if($helper->isEnable()) : ?>
+<form method="post" action="<?= $block->getmyUrl() ?>" autocomplete="off" class="form1">
+
+<h1 id="header"> BOOK YOUR SLOT</h1>
+<div>
+    <input type="text" class='input2' placeholder="Enter your Name" autocomplete="off" name="name" required/>
+        <input class="input1"  autocomplete="off"
+            type="text"
+            id="date"
+            name="date"
+            placeholder="Please Select the date"
+            required  />
+    </div>        <!-- <input type="radio" id="radio1" checked="" value="1" name="radio2">
+
+                <label for="radio1" class="label"><span>Radiobutton choice</span></label>
+                <input type="radio" id="radio2" checked="" value="1" name="radio2">
+
+              
+                <label for="radio2" class="label"><span>Radiobutton choice</span></label> -->
+    
+                <div class='align'>
+<ul class='donate-now'>
+    <li> <input type="radio" id="a25" name="slot" value="6:00 Am" />
+         <label for="a25">6:00 AM</label>
+    </li> 
+    <li>
+        <input type="radio" id="a50" name="slot" value="7:00 Am" />
+        <label for="a50">7:00 AM</label>
+    </li>
+    <li>
+        <input type="radio" id="a75" name="slot" value="8:00 Am" />
+        <label for="a75">8:00 AM</label>
+    </li>
+    <li>
+        <input type="radio" id="a100" name="slot" value="9:00 Am"/>
+        <label for="a100">9:00 AM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot" value="10:00 Am"/>
+        <label for="other">10:00 AM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="11:00 Am" />
+        <label for="other">11:00 AM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="12:00 Am" />
+        <label for="other">12:00 AM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="01:00 Pm" />
+        <label for="other">01:00 PM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="3:00 Pm" />
+        <label for="other">02:00 2PM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="4:00 Pm" />
+        <label for="other">03:00 PM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="5:00 Pm" />
+        <label for="other">04:00 PM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="6:00 Pm" />
+        <label for="other">05:00 PM</label>
+    </li>
+    <li>
+        <input type="radio" id="other" name="slot"value="7:00 Pm" />
+        <label for="other">06:00 PM</label>
+    </li>
+</ul>
+                </div>
+<br>
+<br><br>
+<div class='donate-now' >
+    <li>
+    <input id='Cbutton'type="submit" value="Book Now"<?= __("Submit") ?>/>
+    </li>
+</div>
+</form>
+<table id='customers'>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Slot</th>
+ </tr>
+<?php
+$data = $block->getAllData();
+?>
+
+  <?php foreach($data as $datanew) 
+  
+  {
+    
+    ?>
+  <tr>  
+     <td><?php echo $datanew['name']; ?></td>
+    <td><?php echo $datanew['date']; ?></td>
+    <td><?php  echo $datanew['slot']; ?></td>
+   
+  </tr>
+<?php 
+}
+ ?>
+</table>
+<script>
+require([
+    'jquery',
+    'mage/calendar'
+], function($){
+    $('#date').datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+    });
+});
+</script>
+<?php endif; ?>
