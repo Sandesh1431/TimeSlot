@@ -46,22 +46,16 @@ namespace Codilar\Project\Controller\Index;
             $Slotdata->setName($name);
             $blockInstance = $this->_objectManager->get('Codilar\Project\Block\Slot');
             $data=$blockInstance->getAllData();
-            foreach($data as $datanew){
-
             $count=0;
-            try{
-            if($date==$datanew['date'] && $slot==$datanew['slot']){
-                      $count++;
-
+            foreach($data as $datanew){
+            if(($date==$datanew['date'] )&& ($slot==$datanew['slot'])){
+            $count++;
+                }
             }
-            }catch (CouldNotSaveException $e) {
-            echo $e->getMessage();
-            }
-            }
-            try{     
+                try{     
                 if ($count>=1){
                 $this->messageManager->addErrorMessage('Slot already Booked');
-                }else if($count==0){
+                }else {
 
                 $this->_SlotsRepository->save($Slotdata);
                 $this->messageManager->addSuccessMessage("Slot Booked!!");
