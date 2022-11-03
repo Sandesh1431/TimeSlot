@@ -15,4 +15,4 @@
         <add id="Codilar_Project_Child::add_row" title="Data" module="Codilar_Project" sortOrder="20" parent="Codilar_Project::manager" action="slot/grid" resource="Codilar_Project::add_row"/>
         <add id="Codilar_Project_Child2::add_row" title="Configuration" module="Codilar_Project" sortOrder="25" parent="Codilar_Project::manager" action="adminhtml/system_config/edit/section/module/slot" resource="Codilar_Project::add_row"/>
     </menu>
-</config>
+</config>   

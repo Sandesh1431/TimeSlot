@@ -32,14 +32,16 @@ namespace Codilar\Project\Controller\Index;
             $this->_SlotsModel = $SlotsInterface;
             return parent::__construct($context);
         }
-
+    
         public function execute()
         {
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $customerSession = $objectManager->create('Magento\Customer\Model\Session');
+            $name= $customerSession->getCustomer()->getName();
+            // $email= $customerSession->getCustomer()->getEmail();
             $data = $this->getRequest()->getParams();
             $date=$data['date'];
             $slot=$data['slot'];
-            $name=$data['name'];
-
             $Slotdata=$this->_SlotsModel;
             $Slotdata->setDate($date);
             $Slotdata->setSlot($slot);
@@ -47,27 +49,30 @@ namespace Codilar\Project\Controller\Index;
             $blockInstance = $this->_objectManager->get('Codilar\Project\Block\Slot');
             $data=$blockInstance->getAllData();
             $count=0;
+            if($data){
             foreach($data as $datanew){
-            if(($date==$datanew['date'] )&& ($slot==$datanew['slot'])){
-            $count++;
+                if(($date==$datanew['date'] )&& ($slot==$datanew['slot'])){
+                    $count++;
                 }
             }
-                try{     
+        }
+            try{     
                 if ($count>=1){
-                $this->messageManager->addErrorMessage('Slot already Booked');
-                }else {
-
-                $this->_SlotsRepository->save($Slotdata);
-                $this->messageManager->addSuccessMessage("Slot Booked!!");
+                    $this->messageManager->addErrorMessage('Slot already Booked');
+                }
+                else{
+                    $this->_SlotsRepository->save($Slotdata);
+                    $this->messageManager->addSuccessMessage("Slot Booked!!");
+                }
             }
-            }catch(CouldNotSaveException $e) {
-            echo $e->getMessage();
-
+            catch(CouldNotSaveException $e){
+                echo $e->getMessage();
             }
+        
            
-            $redirect = $this->resultRedirectFactory->create();
-            $redirect->setPath('time');
-            return $redirect;
+        $redirect = $this->resultRedirectFactory->create();
+        $redirect->setPath('time');
+        return $redirect;
             
         
         

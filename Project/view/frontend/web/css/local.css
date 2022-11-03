@@ -3,6 +3,7 @@
     list-style-type: none;
     margin: 25px 0 0 0;
     padding: 0;
+    display: flex;
   }
   
   .donate-now li {
@@ -30,7 +31,7 @@
   
   .donate-now input[type="radio"]:checked+label,
   .Checked+label {
-    background:greenyellow;
+    background:rgb(59, 243, 218);
   }
   
   .donate-now label {
@@ -76,6 +77,8 @@
     margin-top: 10px;
     border: 1px solid #ddd;
     padding-top: 20px;
+    height: 228px;
+    margin-bottom: 10px;
   }
 input#date.input1._has-datepicker{
     border-radius: 10px;
@@ -90,7 +93,8 @@ input#date.input1._has-datepicker{
        background-color:  #15dada;
     border-style: none;
     font-size: large;
-    width: 200px;
+    width: 198px;
+    height: 43px;
     font-weight: bold;
     padding-top:10px;
 }
@@ -104,4 +108,9 @@ width: 400px;
     border-radius: 10px;
     padding-left: 30px;
     margin-left: 20px;
+}.donate{
+  list-style-type: none;
+  margin: 25px 0 0 0;
+  display:flex;
+  justify-content: center;
 }

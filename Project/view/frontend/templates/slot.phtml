@@ -136,7 +136,7 @@ if($helper->isEnable()) : ?>
 
 <h1 id="header"> BOOK YOUR SLOT</h1>
 <div>
-    <input type="text" class='input2' placeholder="Enter your Name" autocomplete="off" name="name" required/>
+   
         <input class="input1"  autocomplete="off"
             type="text"
             id="date"
@@ -150,14 +150,14 @@ if($helper->isEnable()) : ?>
 
               
                 <label for="radio2" class="label"><span>Radiobutton choice</span></label> -->
-    
-                <div class='align'>
+    <div>
+  <div class='align'>
 <ul class='donate-now'>
     <li> <input type="radio" id="a25" name="slot" value="6:00 Am" />
          <label for="a25">6:00 AM</label>
     </li> 
     <li>
-        <input type="radio" id="a50" name="slot" value="7:00 Am" />
+        <input type="radio" id="a50" name="slot" value="7:00 Am" checked/>
         <label for="a50">7:00 AM</label>
     </li>
     <li>
@@ -185,30 +185,30 @@ if($helper->isEnable()) : ?>
         <label for="other">01:00 PM</label>
     </li>
     <li>
-        <input type="radio" id="other" name="slot"value="3:00 Pm" />
-        <label for="other">02:00 2PM</label>
+        <input type="radio" id="other" name="slot"value="2:00 Pm" />
+        <label for="other">02:00 PM</label>
     </li>
     <li>
-        <input type="radio" id="other" name="slot"value="4:00 Pm" />
+        <input type="radio" id="other" name="slot"value="3:00 Pm" />
         <label for="other">03:00 PM</label>
     </li>
     <li>
-        <input type="radio" id="other" name="slot"value="5:00 Pm" />
+        <input type="radio" id="other" name="slot"value="4:00 Pm" />
         <label for="other">04:00 PM</label>
     </li>
     <li>
-        <input type="radio" id="other" name="slot"value="6:00 Pm" />
+        <input type="radio" id="other" name="slot"value="5:00 Pm" />
         <label for="other">05:00 PM</label>
     </li>
     <li>
-        <input type="radio" id="other" name="slot"value="7:00 Pm" />
+        <input type="radio" id="other" name="slot"value="6:00 Pm" />
         <label for="other">06:00 PM</label>
     </li>
 </ul>
-                </div>
-<br>
-<br><br>
-<div class='donate-now' >
+  </div>
+</div>
+
+<div class='donate' >
     <li>
     <input id='Cbutton'type="submit" value="Book Now"<?= __("Submit") ?>/>
     </li>
@@ -219,11 +219,14 @@ if($helper->isEnable()) : ?>
     <th>Name</th>
     <th>Date</th>
     <th>Slot</th>
+    <th>Cancel</th>
+    <!-- <th>Edit</th> -->
  </tr>
 <?php
 $data = $block->getAllData();
 ?>
 
+<?php if($data):?>
   <?php foreach($data as $datanew) 
   
   {
@@ -233,11 +236,18 @@ $data = $block->getAllData();
      <td><?php echo $datanew['name']; ?></td>
     <td><?php echo $datanew['date']; ?></td>
     <td><?php  echo $datanew['slot']; ?></td>
-   
+    <td data-th="<?= $block->escapeHtml(__('Action')) ?>" class="col delete">
+        <a href="<?php echo $block->getDeleteAction() . 'id/' . $datanew->getId(); ?>"><?php echo __('Cancel Booking') ?></a>
+    </td>
+    <!-- <td data-th="<?= $block->escapeHtml(__('Action')) ?>" class="col edit">
+        <a href="<?php echo $block->getEditAction() . 'id/' . $datanew->getId(); ?>"><?php echo __('Edit') ?></a>
+      
+    </td> -->
   </tr>
 <?php 
 }
  ?>
+ <?php endif; ?>
 </table>
 <script>
 require([
